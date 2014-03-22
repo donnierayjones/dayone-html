@@ -3,19 +3,20 @@ body {
   max-width: 35em;
   padding: 0 1em;
   margin: 0 auto;
-  line-height: 1.25em;
+  line-height: 1.4em;
 }
 
 section {
   padding: 2em 0em;
+  page-break-inside:avoid;
 
   p:first-child {
     margin-top: 0;
   }
 
   p:first-child:first-line {
-    font-size: 1.2em;
-    line-height: 1.4em;
+    font-size: 1.3em;
+    line-height: 1.5em;
   }
 }
 
@@ -28,7 +29,9 @@ section {
 }
 
 .photo {
+  display: block;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 .tags {

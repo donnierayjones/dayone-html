@@ -5,6 +5,7 @@
     %meta{:charset=>'utf-8'}
     %meta{:name=>"viewport",:content=>"width=device-width, initial-scale=1, maximum-scale=1" }
     %link{:rel=>'stylesheet', :href=>'/dayone.css'}
+    %link{:rel=>'stylesheet', :href=>'/print.css', :media => 'print'}
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   %body
     - @entries.each do |entry|
@@ -13,7 +14,7 @@
           %img.photo{:src=>'/photo/' + entry.id + '.jpg'}
         = @markdown.render(entry.text)
         %span.date
-          = entry.date.strftime("%A, %B %d, %Y")
+          = entry.date_central.strftime("%A, %B %d, %Y")
         - if entry.tags
           %ul.tags
             - entry.tags.each do |tag|

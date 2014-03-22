@@ -1,4 +1,5 @@
 require 'plist'
+require 'RMagick'
 
 class Entry
   def self.from_path(path_to_doentry, path_to_photo)
@@ -22,6 +23,10 @@ class Entry
     @plist['Creation Date']
   end
 
+  def date_central
+    date + Rational(-6,24)
+  end
+
   def tags
     if @plist['Tags']
       return Array.new @plist['Tags']
@@ -38,6 +43,8 @@ class Entry
   end
 
   def photo_data
-    File.read(@path_to_photo)
+    image = Magick::Image.read(@path_to_photo).first
+    image.resize_to_fit! 1024, 1024
+    image.to_blob
   end
 end
