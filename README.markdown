@@ -9,4 +9,6 @@ Dropbox rather than iCloud.
 It's not very flexible. You'll need to know your way around Ruby /
 Sinatra to get it customized to your liking.
 
+![screenshot](http://f.cl.ly/items/0d3N42390Z0f0g3p060M/Screen%20Shot%202014-03-22%20at%2011.25.58%20AM.png)
+
 [1]: http://dayoneapp.com/
