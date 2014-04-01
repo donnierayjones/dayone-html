@@ -46,7 +46,6 @@ class DayOneHtml < Sinatra::Base
   def get_entries()
     @entries = []
     Dir.glob(@entries_path + '*.doentry') do |entry_path|
-      # do work on files ending in .rb in the desired directory
       photo_path = entry_path.sub('entries', 'photos').sub('.doentry', '.jpg')
       @entries << Entry.from_path(entry_path, photo_path)
     end
