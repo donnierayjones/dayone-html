@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/config_file'
 require 'haml'
 require 'sass'
 require 'plist'
@@ -7,6 +8,9 @@ require 'redcarpet'
 require './entry.rb'
 
 class DayOneHtml < Sinatra::Base
+  register Sinatra::ConfigFile
+
+  config_file 'config.yml'
 
   def initialize()
     super
@@ -47,7 +51,10 @@ class DayOneHtml < Sinatra::Base
     @entries = []
     Dir.glob(@entries_path + '*.doentry') do |entry_path|
       photo_path = entry_path.sub('entries', 'photos').sub('.doentry', '.jpg')
-      @entries << Entry.from_path(entry_path, photo_path)
+      entry = Entry.from_path(entry_path, photo_path)
+      if entry.date >= settings.startDate and entry.date <= settings.endDate
+        @entries << Entry.from_path(entry_path, photo_path)
+      end
     end
 
     @entries.sort_by! do |e|
