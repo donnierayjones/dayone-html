@@ -24,6 +24,12 @@ class DayOneHtml < Sinatra::Base
     haml :dayone, :format => :html5
   end
 
+  get '/notags' do
+    @markdown = get_markdown
+    @entries = get_entries.select { |entry| entry.tags.empty? }
+    haml :dayone, :format => :html5
+  end
+
   get '/tag/:tag' do |tag|
     @markdown = get_markdown
     @entries = get_entries.select do |entry|
