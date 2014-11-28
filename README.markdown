@@ -19,7 +19,9 @@ Sinatra to get it customized to your liking.
   Ruby v2 by default. (this may work on older versions, but I have
   not tested.)
 * Open Terminal and run `sudo gem install bundler`
-* [imagemagick][3] (use [homebrew][4] to install)
+* Install [homebrew][4]
+* brew install pkgconfig
+* brew install [imagemagick][3]
 
 ### Steps
 
